@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>La influencia de los problemas emocionales</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1: #f8d7e1;
+    --bg2: #fce4ec;
+    --accent1: #ff6b9a;
+    --accent2: #ffd166;
+    --accent3: #6bd6ff;
+    --text: #222;
+    --card-bg: rgba(255,255,255,0.9);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    color:var(--text);
+    background: linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 100%);
+    overflow-x:hidden;
+  }
+  .wrap{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+    position:relative;
+  }
+  .card{
+    width:100%;
+    max-width:900px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.95));
+    border-radius:20px;
+    padding:34px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    position:relative;
+    overflow:visible;
+  }
+  h1{margin:0;font-size:1.9rem;line-height:1.15;font-weight:700;}
+  h2{margin:8px 0 18px 0;font-size:1rem;color:#5a5a5a;font-weight:500;}
+  .hero-row{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;}
+  .left{flex:1 1 360px;}
+  .testimonio-box{
+    margin-top:8px;
+    background:var(--card-bg);
+    border-radius:16px;
+    padding:18px 20px;
+    max-width:720px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    transform-origin:top center;
+    opacity:0;
+    transform: translateY(10px) scale(0.98);
+    transition: opacity .8s ease, transform .8s cubic-bezier(.2,.9,.3,1);
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .testimonio-box.visible{opacity:1;transform: translateY(0) scale(1);}
+  .quote{font-size:1.15rem;font-style:italic;margin:0;color:#222;}
+  .autor{font-weight:600;color:#444;font-size:.95rem;margin-left:auto;}
+  .controls{display:flex;gap:10px;margin-top:12px;align-items:center;}
+  .btn{
+    background:linear-gradient(90deg,var(--accent1),#ff94b7);
+    color:white;border:none;padding:10px 14px;border-radius:12px;
+    font-weight:600;cursor:pointer;
+    box-shadow:0 6px 14px rgba(255,107,154,0.22);
+  }
+  .btn:active{transform:translateY(1px)}
+  .small-note{font-size:.85rem;color:#666;padding-top:4px}
+  .right{flex:0 0 240px;display:flex;align-items:center;justify-content:center;}
+  .badge{
+    background:linear-gradient(135deg,var(--accent2),#fff1c6);
+    padding:10px 14px;border-radius:14px;font-weight:700;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  .info{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .info .pill{
+    background:rgba(255,255,255,0.85);
+    padding:10px;border-radius:12px;font-size:.9rem;
+    box-shadow:0 6px 14px rgba(0,0,0,0.05);
+    display:flex;gap:8px;align-items:center;justify-content:center;
+  }
+  @media (max-width:880px){.hero-row{flex-direction:column}.right{order:2;margin-top:14px}.info{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){h1{font-size:1.5rem}.right{display:none}.info{grid-template-columns:1fr}}
+  .testimonio-box:hover{ transform: translateY(-4px) scale(1.01); transition: transform .25s ease, opacity .6s}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card" role="main" aria-labelledby="mainTitle">
+    <div class="hero-row">
+      <div class="left">
+        <h1 id="mainTitle">La influencia de los problemas emocionales en el rendimiento deportivo de los jóvenes</h1>
+        <h2>Trabajo de investigación final realizado por <strong>Belén Silvero</strong></h2>
+        <div class="testimonio-box" id="testimonio">
+          <p class="quote" id="texto">Cargando testimonio...</p>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="autor" id="autor"></div>
+            <div style="flex:1"></div>
+            <div class="controls">
+              <button class="btn" id="otroBtn" title="Mostrar otro testimonio">Otro testimonio</button>
+            </div>
+          </div>
+          <div class="small-note">Cambia automáticamente cada 8 segundos · Tocá "Otro testimonio" para ver más.</div>
+        </div>
+        <div class="info" aria-hidden="true">
+          <div class="pill">🧠 Psicología y deporte</div>
+          <div class="pill">💬 Testimonios reales</div>
+          <div class="pill">💡 Estrategias prácticas</div>
+        </div>
+      </div>
+      <div class="right" aria-hidden="true">
+        <div class="badge">Jóvenes · Rendimiento · Emoción</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const testimonios = [
+  { texto: "Cuando era más chico me afectaban los comentarios sobre mi físico o mi juego, pero después aprendés a no darles importancia. Eso te hace más fuerte no solo en el deporte, sino también en la vida.", autor: "Ignacio, 18 años" },
+  { texto: "Perder o fallar no significa que no puedas lograrlo después.", autor: "Agustín L, 18 años" },
+  { texto: "Pensé en abandonar, pero me di cuenta de que dejarlo sería perder todo el proceso y el esfuerzo que ya había hecho.", autor: "Agustín F, 16 años" },
+  { texto: "El vóley fue un alivio para mí en muchos momentos. Me ayudó a distraerme y a canalizar mis pensamientos.", autor: "Uma, 15 años" },
+  { texto: "Aprendí a controlar mis nervios y a no darle tanta importancia a lo que digan los demás. El deporte me ayudó mucho con eso.", autor: "Candelaria, 16 años" },
+  { texto: "Aprendí que nunca me tengo que rendir, que tengo que ser constante y seguir adelante siempre.", autor: "Álvaro, 15 años" },
+  { texto: "No suelo tener muchos momentos difíciles, pero creo que todo se resuelve entrenando y poniéndole ganas.", autor: "Fantino, 16 años" },
+  { texto: "Practicar un deporte con amigas y personas que te motivan es lo más lindo que hay.", autor: "Renata, 15 años" },
+  { texto: "Para mí el básquet es mi vida, no me imagino sin hacerlo.", autor: "Naomi, 16 años" }
+];
+
+const textoEl = document.getElementById('texto');
+const autorEl = document.getElementById('autor');
+const box = document.getElementById('testimonio');
+const btn = document.getElementById('otroBtn');
+let current = -1;
+
+function mostrarAleatorio(forceIndex=null){
+  let idx;
+  if(Number.isInteger(forceIndex)) idx = forceIndex % testimonios.length;
+  else {
+    idx = Math.floor(Math.random() * testimonios.length);
+    if(idx === current) idx = (idx + 1) % testimonios.length;
+  }
+  current = idx;
+  const t = testimonios[idx];
+  box.classList.remove('visible');
+  setTimeout(()=>{
+    textoEl.textContent = `"${t.texto}"`;
+    autorEl.textContent = `– ${t.autor}`;
+    box.classList.add('visible');
+  }, 260);
+}
+
+window.addEventListener('load', ()=>{
+  mostrarAleatorio();
+});
+btn.addEventListener('click', ()=> mostrarAleatorio());
+let auto = setInterval(()=> mostrarAleatorio(), 8000);
+btn.addEventListener('click', ()=>{
+  clearInterval(auto);
+  auto = setInterval(()=> mostrarAleatorio(), 8000);
+});
+btn.addEventListener('keyup', (e) => {
+  if(e.code === 'Space' || e.code === 'Enter') mostrarAleatorio();
+});
+</script>
+</body>
+</html>
